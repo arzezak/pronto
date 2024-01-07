@@ -1,4 +1,4 @@
-#!bin/zsh
+#!/bin/zsh
 
 autoload -Uz add-zsh-hook vcs_info
 
