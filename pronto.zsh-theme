@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-autoload -Uz add-zsh-hook vcs_info
+autoload -Uz add-zsh-hook
 
 setopt prompt_subst
 
@@ -14,10 +14,21 @@ zstyle ':vcs_info:git:*' formats '(%b%m%u%c) '
 zstyle ':vcs_info:git:*' actionformats '(%b%u%c|%a) '
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
-+vi-git-untracked() {
+function +vi-git-untracked() {
   if [[ -n $(git status --porcelain 2>/dev/null | grep '^??') ]]; then
     hook_com[misc]+='|!'
   fi
 }
 
-PROMPT='%F{green}%~ %F{magenta}${vcs_info_msg_0_}%F{yellow}%#%f '
+function vi-mode-color() {
+  if [[ $KEYMAP == vicmd ]]; then
+    PROMPT='%F{red}%~ %F{magenta}${vcs_info_msg_0_}%F{blue}%#%f '
+  else
+    PROMPT='%F{green}%~ %F{magenta}${vcs_info_msg_0_}%F{yellow}%#%f '
+  fi
+
+  zle reset-prompt
+}
+
+zle -N zle-line-init vi-mode-color
+zle -N zle-keymap-select vi-mode-color
