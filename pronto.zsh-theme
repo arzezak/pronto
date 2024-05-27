@@ -22,7 +22,7 @@ function +vi-git-untracked() {
 
 function vi-mode-color() {
   if [[ $KEYMAP == vicmd ]]; then
-    PROMPT='%F{red}%~ %F{magenta}${vcs_info_msg_0_}%F{blue}%#%f '
+    PROMPT='%F{green}%~ %F{magenta}${vcs_info_msg_0_}%F{yellow}%F{blue}%#%f '
   else
     PROMPT='%F{green}%~ %F{magenta}${vcs_info_msg_0_}%F{yellow}%#%f '
   fi
