@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-autoload -Uz add-zsh-hook
+autoload -Uz add-zsh-hook edit-command-line
 
 setopt prompt_subst
 
@@ -30,5 +30,8 @@ function vi-mode-color() {
   zle reset-prompt
 }
 
+zle -N edit-command-line
 zle -N zle-line-init vi-mode-color
 zle -N zle-keymap-select vi-mode-color
+
+bindkey -M vicmd ! edit-command-line
