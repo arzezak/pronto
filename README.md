@@ -2,4 +2,4 @@
 
 Super simple Zsh prompt.
 
-![Screenshot](/screenshot.png)
+![Screenshot](./screenshot.png)
