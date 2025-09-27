@@ -34,4 +34,6 @@ zle -N edit-command-line
 zle -N zle-line-init vi-mode-color
 zle -N zle-keymap-select vi-mode-color
 
-bindkey -M vicmd ! edit-command-line
+bindkey -M vicmd ";" edit-command-line
+bindkey -M viins "^;" edit-command-line
+bindkey -M viins "jk" vi-cmd-mode
