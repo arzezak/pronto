@@ -8,8 +8,7 @@ Super simple Zsh prompt with Git integration and vi-mode support.
 
 - Git branch and status indicators (`|+` unstaged, `|*` staged, `|!` untracked)
 - Vi-mode visual indication (yellow/blue prompt character)
-- `edit-command-line` support (`;` in command mode, `Ctrl+;` in insert mode)
-- `jk` to switch from insert to command mode
+- `edit-command-line` support (`Alt+e` in command mode, `Ctrl+e` in insert mode)
 
 ## Installation
 

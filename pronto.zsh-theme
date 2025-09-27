@@ -22,7 +22,7 @@ function +vi-git-untracked() {
 
 function vi-mode-color() {
   if [[ $KEYMAP == vicmd ]]; then
-    PROMPT='%F{green}%~ %F{magenta}${vcs_info_msg_0_}%F{yellow}%F{blue}%#%f '
+    PROMPT='%F{green}%~ %F{magenta}${vcs_info_msg_0_}%F{blue}%#%f '
   else
     PROMPT='%F{green}%~ %F{magenta}${vcs_info_msg_0_}%F{yellow}%#%f '
   fi
@@ -34,6 +34,5 @@ zle -N edit-command-line
 zle -N zle-line-init vi-mode-color
 zle -N zle-keymap-select vi-mode-color
 
-bindkey -M vicmd ";" edit-command-line
-bindkey -M viins "^;" edit-command-line
-bindkey -M viins "jk" vi-cmd-mode
+bindkey -M vicmd "^[e" edit-command-line
+bindkey -M viins "^e" edit-command-line
