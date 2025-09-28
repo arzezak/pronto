@@ -15,7 +15,7 @@ zstyle ':vcs_info:git:*' actionformats '(%b%u%c|%a) '
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
 function +vi-git-untracked() {
-  if [[ -n $(git status --porcelain 2>/dev/null | grep '^??') ]]; then
+  if [[ -n $(git ls-files --others --exclude-standard 2>/dev/null) ]]; then
     hook_com[misc]+='|!'
   fi
 }
@@ -25,11 +25,9 @@ function short-pwd() {
 }
 
 function vi-mode-color() {
-  if [[ $KEYMAP == vicmd ]]; then
-    PROMPT='%F{green}$(short-pwd) %F{magenta}${vcs_info_msg_0_}%F{blue}%#%f '
-  else
-    PROMPT='%F{green}$(short-pwd) %F{magenta}${vcs_info_msg_0_}%F{yellow}%#%f '
-  fi
+  local color=$([[ $KEYMAP == vicmd ]] && echo blue || echo yellow)
+
+  PROMPT="%F{green}\$(short-pwd) %F{magenta}\${vcs_info_msg_0_}%F{$color}%#%f "
 
   zle reset-prompt
 }
