@@ -6,6 +6,7 @@ Super simple Zsh prompt with Git integration and vi-mode support.
 
 ## Features
 
+- Abbreviated directory paths (Fish-style truncation: `~/D/a/pronto`)
 - Git branch and status indicators (`|+` unstaged, `|*` staged, `|!` untracked)
 - Vi-mode visual indication (yellow/blue prompt character)
 - `edit-command-line` support (`Alt+e` in command mode, `Ctrl+e` in insert mode)
