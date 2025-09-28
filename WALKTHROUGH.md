@@ -98,22 +98,27 @@ Creates abbreviated directory paths (Fish shell style):
 ```zsh
 function vi-mode-color() {
   local color=$([[ $KEYMAP == vicmd ]] && echo blue || echo yellow)
+  local status_color="%(?.%F{$color}.%F{red})"
 
-  PROMPT="%F{green}\$(short-pwd) %F{magenta}\${vcs_info_msg_0_}%F{$color}%#%f "
+  PROMPT="%F{green}\$(_pronto_pwd) %F{magenta}\${vcs_info_msg_0_}${status_color}%#%f "
 
   zle reset-prompt
 }
 ```
 
-Updates prompt colors based on vi-mode state:
+Updates prompt colors based on vi-mode state and command exit status:
 
 - Set color to blue for command mode (`vicmd`), yellow for insert mode
+- Create status_color variable with conditional coloring: `%(?.%F{$color}.%F{red})`
+  - `?` checks the exit status of the previous command
+  - If exit status is 0 (success), use vi-mode color
+  - If exit status is non-zero (failure), use red color
 - Build the prompt with:
   - `%F{green}`: Green color for directory
   - `\$(_pronto_pwd)`: Abbreviated directory path
   - `%F{magenta}`: Magenta color for Git info
   - `\${vcs_info_msg_0_}`: Git branch and status
-  - `%F{$color}`: Vi-mode dependent color
+  - `${status_color}`: Exit status dependent color (vi-mode or red)
   - `%#`: `#` for root, `%` for regular user
   - `%f`: Reset color
 - Refresh the prompt display

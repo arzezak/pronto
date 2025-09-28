@@ -26,8 +26,9 @@ function _pronto_pwd() {
 
 function vi-mode-color() {
   local color=$([[ $KEYMAP == vicmd ]] && echo blue || echo yellow)
+  local status_color="%(?.%F{$color}.%F{red})"
 
-  PROMPT="%F{green}\$(_pronto_pwd) %F{magenta}\${vcs_info_msg_0_}%F{$color}%#%f "
+  PROMPT="%F{green}\$(_pronto_pwd) %F{magenta}\${vcs_info_msg_0_}${status_color}%#%f "
 
   zle reset-prompt
 }
