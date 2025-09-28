@@ -16,3 +16,7 @@ Super simple Zsh prompt with Git integration and vi-mode support.
 1. Clone the repository: `git clone https://github.com/arzezak/pronto.git`
 2. Source the theme file: `source pronto.zsh-theme`
 3. Or add `source /path/to/pronto.zsh-theme` to your `.zshrc`
+
+## Documentation
+
+- [Walkthrough](WALKTHROUGH.md) - Line-by-line explanation of how the theme works

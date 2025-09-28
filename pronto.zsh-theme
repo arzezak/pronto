@@ -20,14 +20,14 @@ function +vi-git-untracked() {
   fi
 }
 
-function short-pwd() {
+function _pronto_pwd() {
   echo "${PWD/#$HOME/~}" | sed 's|\([^/]\)[^/]*/|\1/|g'
 }
 
 function vi-mode-color() {
   local color=$([[ $KEYMAP == vicmd ]] && echo blue || echo yellow)
 
-  PROMPT="%F{green}\$(short-pwd) %F{magenta}\${vcs_info_msg_0_}%F{$color}%#%f "
+  PROMPT="%F{green}\$(_pronto_pwd) %F{magenta}\${vcs_info_msg_0_}%F{$color}%#%f "
 
   zle reset-prompt
 }
